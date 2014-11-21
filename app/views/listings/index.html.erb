@@ -1,0 +1,28 @@
+  <h1>My items</h1>
+
+  <div >
+
+  <div class="row">
+    <% @listings.each do |listing| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <%= image_tag listing.image.url %>
+          <div class="caption">
+            <div class = "title"><h3><%= listing.title %></h3></div>
+            <div class = "price"><h4><%= number_to_currency(listing.price) %></h4></div>
+            <div class = "clearfix"></div>
+            <div class = "size">Size: <%= listing.size %></div> 
+            <div class = "condition"><%= listing.condition %></div>
+            <div class = "clearfix"></div>
+            <%= link_to 'Show', listing, class: "btn btn-link"  %>
+            <%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link"  %>
+            <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+
+<%= link_to 'New Listing', new_listing_path, class: "btn btn-link"  %>
